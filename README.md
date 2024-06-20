@@ -1,4 +1,9 @@
-A fantastic learning experience, combining the power of React with the vast data resources provided by OpenWeatherMap.
+It was a fantastic learning experience, combining the power of React with the vast data resources provided by OpenWeatherMap.
+
+1. Keep The hot.jpg and cold.jpg in assets folder make the assets folder in src folder
+2. keep the Description.jsx and Description.css in components folder make the components folder in src folder
+3. remaining files go in src folder of react project
+
 
 Key Features:
 Real-time Weather Data: Fetches up-to-date weather information for any city worldwide.

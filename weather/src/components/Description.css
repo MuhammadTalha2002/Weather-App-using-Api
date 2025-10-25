@@ -1,73 +1,190 @@
+:root {
+  --section-overlay: rgba(0, 0, 0, 0.6);
+  --background-overlay: rgba(0, 0, 0, 0.3);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  background: #000;
+  overflow-x: hidden;
+  font-size: 16px;
+}
+
+/* 🌡️ Weather description cards */
 .section__descriptions {
-   display: grid;
-   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* ✅ flexible grid */
-   gap: 1rem;
-   margin-top: 1rem;
- }
- 
- .card {
-   display: flex;
-   flex-direction: column;
-   align-items: center;
-   justify-content: center;
-   background-color: var(--section--overlay);
-   padding: 1rem;
-   border-radius: 0.6rem;
-   text-align: center;
-   transition: transform 0.2s ease, background 0.3s ease;
- }
- 
- .card:hover {
-   transform: translateY(-5px);
-   background-color: rgba(0, 0, 0, 0.6);
- }
- 
- .description__card-icon {
-   display: flex;
-   align-items: center;
-   justify-content: center;
-   gap: 6px;
-   margin-bottom: 10px;
-   font-size: 1.2rem;
- }
- 
- .description__card-icon small {
-   text-transform: capitalize;
-   font-size: 0.9rem;
-   color: #ddd;
- }
- 
- .card h2 {
-   font-size: 1.2rem;
-   font-weight: 600;
-   color: white;
- }
- 
- /* ✅ Tablet view */
- @media screen and (max-width: 992px) {
-   .section__descriptions {
-     grid-template-columns: repeat(2, 1fr);
-     gap: 1rem;
-   }
- 
-   .card h2 {
-     font-size: 1.1rem;
-   }
- }
- 
- /* ✅ Mobile view */
- @media screen and (max-width: 600px) {
-   .section__descriptions {
-     grid-template-columns: 1fr;
-     gap: 0.8rem;
-   }
- 
-   .card {
-     padding: 0.8rem;
-   }
- 
-   .card h2 {
-     font-size: 1rem;
-   }
- }
- 
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--section-overlay);
+  padding: 1rem;
+  border-radius: 0.6rem;
+  text-align: center;
+  transition: transform 0.2s ease, background 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  background-color: rgba(0, 0, 0, 0.75);
+}
+
+.description__card-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  margin-bottom: 10px;
+  font-size: 1.2rem;
+}
+
+.description__card-icon small {
+  text-transform: capitalize;
+  font-size: 0.9rem;
+  color: #ddd;
+}
+
+.card h2 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: white;
+}
+
+/* ⭐ Favorites bar */
+.section__favorites {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  background-color: transparent;
+  padding: 0;
+}
+
+.section__favorites .pill {
+  background: rgba(255,255,255,0.9);
+  color: #000;
+  border: none;
+  border-radius: 999px;
+  padding: 0.4rem 0.8rem;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.section__favorites .pill:hover {
+  background: #eaeaea;
+}
+
+.fav-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.6rem 0.8rem !important;
+}
+
+/* 🕒 Hourly forecast strip */
+.section__strip {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(90px, 1fr);
+  overflow-x: auto;
+  gap: 0.6rem;
+  padding-bottom: 0.4rem;
+  scroll-snap-type: x mandatory;
+  background-color: var(--section-overlay);
+}
+
+.strip__cell {
+  background: rgba(0,0,0,0.25);
+  border-radius: 0.6rem;
+  padding: 0.6rem;
+  text-align: center;
+  scroll-snap-align: start;
+}
+
+.strip__time { font-size: 0.9rem; opacity: 0.9; margin-bottom: 0.2rem; }
+.strip__temp { font-weight: 600; }
+
+/* Hide ugly scrollbar on Webkit (mobile/desktop) */
+.section__strip::-webkit-scrollbar {
+  display: none;
+}
+.section__strip {
+  -ms-overflow-style: none;  /* IE/Edge */
+  scrollbar-width: none;      /* Firefox */
+}
+
+/* 📊 AQI + UV metrics */
+.section__metrics {
+  display: grid;
+  gap: 0.8rem;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  background-color: transparent;
+  padding: 0;
+}
+
+.metric {
+  background-color: var(--section-overlay);
+  border-radius: 0.6rem;
+  padding: 0.8rem 1rem;
+  border: 2px solid transparent;
+  transition: border 0.3s ease;
+}
+
+.metric:hover {
+  border: 2px solid #fff;
+}
+
+.metric__label {
+  opacity: 0.9;
+  margin-bottom: 0.25rem;
+  font-size: 0.85rem;
+}
+
+.metric__value {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+/* 📱 Responsive Breakpoints */
+@media (max-width: 992px) {
+  .card h2 { font-size: 1.1rem; }
+  .metric__value { font-size: 1rem; }
+}
+
+@media (max-width: 600px) {
+  .section__descriptions {
+    grid-template-columns: 1fr;
+    gap: 0.8rem;
+  }
+  .card { padding: 0.8rem; }
+  .card h2 { font-size: 1rem; }
+  .metric__value { font-size: 0.95rem; }
+}
+
+@media (max-width: 480px) {
+  .section__cards {
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+  }
+  .strip__cell {
+    min-width: 75px;
+    padding: 0.4rem;
+  }
+  .metric__value {
+    font-size: 0.9rem;
+  }
+}

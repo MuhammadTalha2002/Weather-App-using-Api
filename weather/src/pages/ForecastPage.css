@@ -1,0 +1,63 @@
+.forecast-container {
+    padding: 20px;
+    text-align: center;
+    color: #fff;
+  }
+  
+  .forecast-container h2 {
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+    color: #ffeb3b;
+  }
+  
+  .forecast-grid {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  
+  .forecast-card {
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 12px;
+    padding: 15px;
+    width: 140px;
+    text-align: center;
+    transition: transform 0.2s ease, background 0.2s ease;
+  }
+  
+  .forecast-card:hover {
+    transform: translateY(-5px);
+    background: rgba(0, 0, 0, 0.7);
+  }
+  
+  .forecast-card .day {
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .forecast-card img {
+    width: 60px;
+    height: 60px;
+  }
+  
+  .forecast-card .temps {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 0;
+  }
+  
+  .forecast-card .min {
+    color: #4fc3f7;
+  }
+  
+  .forecast-card .max {
+    color: #ff7043;
+  }
+  
+  .forecast-card .desc {
+    font-size: 0.9rem;
+    font-style: italic;
+    margin-top: 5px;
+  }
+  
